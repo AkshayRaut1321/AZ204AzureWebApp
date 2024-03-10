@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TestAutoScaleOutApp.Models.Product>
+@{
+    ViewData["Title"] = "Home Page";
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>. - Prod - v3</p>
+
+    <form asp-controller="Home" asp-action="ExecuteRazorFunction" method="post">
+        <button type="submit">Execute Razor Function</button>
+    </form>
+
+    Is Beta feature available ? @ViewData["IsBeta"].ToString();
+
+    <table class="table">
+        <thead>
+            <tr>
+                @if (Convert.ToBoolean(ViewData["IsBeta"]))
+                {
+                    <th>Id</th>
+                }
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (Convert.ToBoolean(ViewData["IsBeta"]))
+                    {
+                        <td>@item.Id</td>
+                    }
+                    <td>@item.Name</td>
+                    <td>@item.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
