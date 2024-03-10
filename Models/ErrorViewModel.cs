@@ -1,4 +1,4 @@
-namespace TestAutoScaleOutApp.Models
+namespace AZ204AzureWebApp.Models
 {
     public class ErrorViewModel
     {

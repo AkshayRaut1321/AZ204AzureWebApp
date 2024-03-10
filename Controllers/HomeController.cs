@@ -5,9 +5,9 @@ using Microsoft.FeatureManagement.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using TestAutoScaleOutApp.Models;
+using AZ204AzureWebApp.Models;
 
-namespace TestAutoScaleOutApp.Controllers
+namespace AZ204AzureWebApp.Controllers
 {
     public class HomeController : Controller
     {

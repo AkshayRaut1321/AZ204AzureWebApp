@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "TestAutoScaleOutApp": {
+    "AZ204AzureWebApp": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
