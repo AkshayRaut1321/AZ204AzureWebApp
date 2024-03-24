@@ -12,7 +12,11 @@
         <button type="submit">Execute Razor Function</button>
     </form>
 
-    Is Beta feature available ? @ViewData["IsBeta"].ToString();
+    Is Beta feature available ?
+    @if (ViewData["IsBeta"] != null)
+    {
+        <p>@ViewData["IsBeta"]?.ToString()</p>
+    }
 
     <table class="table">
         <thead>

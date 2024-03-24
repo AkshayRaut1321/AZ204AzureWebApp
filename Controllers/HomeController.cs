@@ -14,15 +14,16 @@ namespace AZ204AzureWebApp.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IConfiguration _configuration;
         private readonly IHostEnvironment _hostEnvironment;
-        private readonly IFeatureManager _featureManager;
+        //private readonly IFeatureManager _featureManager;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHostEnvironment hostEnvironment,
-            IFeatureManager featureManager)
+        public HomeController(ILogger<HomeController> logger, IConfiguration configuration, IHostEnvironment hostEnvironment
+            //, IFeatureManager featureManager
+            )
         {
             _configuration = configuration;
             _logger = logger;
             _hostEnvironment = hostEnvironment;
-            _featureManager = featureManager;
+            //_featureManager = featureManager;
         }
 
         public async Task<IActionResult> Index()
@@ -40,9 +41,10 @@ namespace AZ204AzureWebApp.Controllers
                 //connString = _configuration.GetConnectionString("SqlCon");
 
                 //If you want to retrieve from Azure App Configuration resource.
-                connString = _configuration["SqlCon"];
+                //connString = _configuration["SqlCon"];
+                connString = _configuration.GetConnectionString("SqlConMain");
             }
-            string query = "SELECT Id, Name, Price FROM dbo.Product";
+            string query = "SELECT Id, Name, Price FROM dbo.Products";
             DataTable dataTable = new DataTable();
             var products = new List<Product>();
 
@@ -62,11 +64,11 @@ namespace AZ204AzureWebApp.Controllers
                 {
                     var product = new Product();
                     product.Id = Convert.ToInt32(row["Id"]);
-                    product.Name = row["Name"].ToString();
+                    product.Name = row["Name"]!.ToString();
                     product.Price = Convert.ToInt32(row["Price"]);
                     products.Add(product);
                 }
-                ViewData["IsBeta"] = await _featureManager.IsEnabledAsync("IsBeta");
+                //ViewData["IsBeta"] = await _featureManager.IsEnabledAsync("IsBeta");
             }
             catch (Exception ex)
             {
