@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using Microsoft.FeatureManagement;
+﻿using AZ204AzureWebApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.FeatureManagement.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using AZ204AzureWebApp.Models;
 
 namespace AZ204AzureWebApp.Controllers
 {
@@ -42,6 +40,8 @@ namespace AZ204AzureWebApp.Controllers
 
                 //If you want to retrieve from Azure App Configuration resource.
                 //connString = _configuration["SqlCon"];
+
+                //Testing for deploying this on Docker on Linux VM on Azure.
                 connString = _configuration.GetConnectionString("SqlConMain");
             }
             string query = "SELECT Id, Name, Price FROM dbo.Products";
